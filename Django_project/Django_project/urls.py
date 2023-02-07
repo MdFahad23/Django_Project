@@ -1,8 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from First_app import views
+
+from Home import views
+from Blog import views as b
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.Home)
+    path('', views.Home),
+    path('blog/', b.Blog)
 ]
