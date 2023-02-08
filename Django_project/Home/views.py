@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 def Home(request):
-    return HttpResponse('<h1>This is Home Page</h1>')
+    dictatory = {'text_1': 'Home Page is Defined!'}
+    return render(request, 'Home\index.html', context=dictatory)
