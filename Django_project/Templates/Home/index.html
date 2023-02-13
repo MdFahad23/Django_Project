@@ -9,15 +9,24 @@
     <title>Home</title>
   </head>
   <body>
-    <h1>This is Home Page?</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid,
-      doloribus laborum, ipsa commodi neque explicabo quibusdam eveniet, nostrum
-      cum nisi ipsam consectetur corporis sed ad. Molestias quam blanditiis
-      voluptatem porro?
-    </p>
-    <h2>{{text_1}}</h2>
+    <h1>{{text_1}}</h1>
 
-    <img src="{%static 'Home/Image/Banner5.jpg'%}" />
+    <table border="1">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Instrument</th>
+      </tr>
+
+      {% for row in musician %}
+      <tr>
+        <td>{{ row.first_name }}</td>
+        <td>{{ row.last_name }}</td>
+        <td>{{ row.instrument }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <!-- <img src="{%static 'Home/Image/Banner5.jpg'%}" /> -->
   </body>
 </html>
