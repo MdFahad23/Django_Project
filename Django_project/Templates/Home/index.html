@@ -1,34 +1,22 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="styleSheet" href="{%static 'Home/css/style.css'%}" />
-    <title>Home</title>
-  </head>
-  <body>
-    <h1>{{text_1}}</h1>
+{% extends 'Home/base.html' %} {% block block_body %} {% load my_filter %}
 
-    <a href="{% url 'Home:form' %}">Add Musician</a>
+<h1>{{text_1|Custom_filter}}</h1>
 
-    <table border="1">
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Instrument</th>
-      </tr>
+<table border="1">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Instrument</th>
+  </tr>
 
-      {% for row in musician %}
-      <tr>
-        <td>{{ row.first_name }}</td>
-        <td>{{ row.last_name }}</td>
-        <td>{{ row.instrument }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+  {% for row in musician %}
+  <tr>
+    <td>{{ row.first_name }}</td>
+    <td>{{ row.last_name }}</td>
+    <td>{{ row.instrument }}</td>
+  </tr>
+  {% endfor %}
+</table>
 
-    <!-- <img src="{%static 'Home/Image/Banner5.jpg'%}" /> -->
-  </body>
-</html>
+{% endblock %}
