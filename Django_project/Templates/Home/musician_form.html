@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'Home/base.html' %} {% block body_block %}
+<h1>Musician Form:</h1>
+<form method="POST">
+  {{musician_form.as_p}} {% csrf_token %}
+  <input
+    type="submit"
+    name="submit"
+    class="btn btn-primary btn-sm"
+    value="Add"
+  />
+</form>
+{% endblock %}

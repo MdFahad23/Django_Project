@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% extends 'Home/base.html' %} {% block body_block %}
+<h1>Artist Info</h1>
+<hr />
+<h4>Artist Name: {{artist_info.first_name}} {{artist_info.last_name}}</h4>
+<h4>Instrument: {{artist_info.instrument}}</h4>
+<a
+  href="{% url 'Home:edit_artist' artist_id=artist_info.id %}"
+  class="btn btn-success"
+  >Edit</a
+>
+<hr />
+<h1>Album List : Rating {{album_rating.num_start__avg}}</h1>
+<hr />
+<table class="table table-dark table-striped">
+  <tr>
+    <th>Album Id</th>
+    <th>Album Name</th>
+    <th>Release Date</th>
+    <th>Rating</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  {% for album in album_info %}
+  <tr>
+    <td>{{album.id}}</td>
+    <td>{{album.name}}</td>
+    <td>{{album.release_date|date:"M d, Y"}}</td>
+    <td>{{album.num_start}}</td>
+    <td>
+      <a
+        href="{% url 'Home:edit_album' album_id=album.id %}"
+        class="btn btn-primary btn-sm"
+        >Edit</a
+      >
+    </td>
+    <td>
+      <a
+        href="{% url 'Home:delete_album' delete_album_id=album.id %}"
+        class="btn btn-danger btn-sm"
+        onclick="confirm('Are You Sure!')"
+        >Delete</a
+      >
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<br />
+<a class="btn btn-primary btn-sm" href="{%url 'Home:index'%}">Back Home Page</a>
+<a
+  class="btn btn-danger btn-sm"
+  href="{%url 'Home:delete_artist' delete_artist_id=artist_info.id%}"
+  onclick="confirm('Are You Sure!')"
+  >Delete Artist</a
+>
+
+{% endblock %}
